@@ -25,7 +25,7 @@ class Mob {
   private int base_attack = 1;
   private int base_defense = 1;
   private int base_health = 10;
-  Mob() { System.out.println("Living thing created!"); heal(); }
+  Mob() { puts("Living thing created!"); heal(); }
   Mob(int base_attack, int base_defense, int base_health) {
     // System.out.println("Monster created");
     // this.name = name;

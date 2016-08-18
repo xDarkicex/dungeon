@@ -19,7 +19,7 @@ class Game {
       "You took an arrow to the knee!",
       "The arrow pierced your heart, killing you."
     },{
-      "You Trigger a guillitine",
+      "You trigger a guillitine",
       "Thinking quickly you grab the shield of a fallen adventure, shielding yourself from near death.",
       "You try to dodge the massive blade, but it chops your right toe off.",
       "The Blade comes crushing down with intense speed slicing your head off, you see your body fall as the blood leaves your brain."
@@ -28,6 +28,16 @@ class Game {
       "You take your foot away slowly, to your amazement, the plate does nothing the trap is broken",
       "The trap springs to life, but the spikes within this ancient trap have long since dulled.",
       "The room imediately bursts into flames."
+    },{
+      "You come to a bridge, over a dark river. You hear a creek",
+      "It was nothing, keep walking",
+      "A board cracks splintering your leg",
+      "You fall through bridge into the murky river blow, struggling to get a float you see a large creature coming near you. Before you can react it swollows you whole."
+    },{
+      "You kick a rock, it sets of a trap",
+      "This trap, fails completely.",
+      "The trap sets off a flurry of blow darts, one hits you in the shoulder.",
+      "The room comes to life, whirls, and whisps whisle by as millions of little darts sting your body, you stumble. You feel fire burning inside your vains. Death by posion."
     }
   };
   private String[] chest_text = new String[]{
