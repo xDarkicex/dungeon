@@ -182,6 +182,7 @@ class Game {
         break;
       case 2:
         // Run!
+
         puts("Can't run!");
         break;
       case 3:
@@ -191,9 +192,18 @@ class Game {
     }
 
   }
+  // ememy attacks
+  public void enemy_turn(player){
+    int  turn = 1;
+    while(turn == 1){
+      int damage = 7 * player.level;
+      player.health -= damage;
+      turn++;
+    }
+  }
 }
 class Player extends Mob {
-  public int potion = 2;
+  public int potion = (int)Math.floor(Math.random()*3);
   public int pheonix = 0;
   Player() {
     System.out.println("Player created");

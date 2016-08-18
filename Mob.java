@@ -2,6 +2,7 @@ class Mob {
   public enum Monster {
     MIMIC ("Mimic", "That's no chest!", 5,5,2),
     SLIME ("Slime", "A wobbly creature jumps in front of you!", 1, 1, 1),
+    VAMPIRE ("Vampire", "Attack from the shadows", 10,10,10),
     SKELETON ("Skeleton", "A scary spooky skeleton appears!", 3,1,1);
     public String name;
     public String description;
@@ -25,7 +26,7 @@ class Mob {
   private int base_attack = 1;
   private int base_defense = 1;
   private int base_health = 10;
-  Mob() { puts("Living thing created!"); heal(); }
+  Mob() { System.out.println("Living thing created!"); heal(); }
   Mob(int base_attack, int base_defense, int base_health) {
     // System.out.println("Monster created");
     // this.name = name;
@@ -39,6 +40,7 @@ class Mob {
     this.xp += xp;
     if(this.xp > (100*level)) {
       set_level(level+1);
+
     }
   }
   public void set_level(int level) { this.level = level; heal(); }
