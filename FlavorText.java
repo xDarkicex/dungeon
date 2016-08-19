@@ -17,6 +17,16 @@ public class FlavorText {
     "A spider bites your toe."
 
   };
+  public static final String[] level_up = new String[]{
+    "** **** Congrats! You leveled up! **** **",
+    "Big deal, level up",
+    "You leveled up! What you what a throphy or something..?",
+    "Good Job! +1 level",
+    "lvl up, aint no body got time for this..",
+    "just 397 more magikarp candies to go!",
+    "Wahoo LEVEL UP BRO",
+    "You even lvl brah?!"
+  };
   public static final String[] run_away = new String[]{
     "You cant Run, From a trainer Battle!!!",
     "Running away like a little Bitch.",
@@ -68,7 +78,7 @@ public class FlavorText {
     "A man in the Shadows, gives you a potion, only to disapear before you can reply.",
     "You find a potion at an abandoned campsite",
     "You find a potion behind a rock",
-    "You fiind a potion inside a creepy alter",
+    "You find a potion inside a creepy alter",
     "You find a potion under your pillow",
     "You find a potion in a babbling brook",
     "You found a potion in an old chest.",
@@ -91,6 +101,7 @@ public class FlavorText {
   public static String potion() { return text_from(FlavorText.potions); }
   public static String story() { return text_from(FlavorText.story_pieces); }
   public static String unarmed() { return text_from(FlavorText.attack_unarmed); }
+    public static String level_up() { return text_from(FlavorText.level_up); }
   public static String run_away() { return text_from(FlavorText.run_away); }
   public static String chest() { return text_from(FlavorText.chests); }
   public static String[] trap() { return object_from(FlavorText.traps); }

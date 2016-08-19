@@ -21,6 +21,7 @@ class Mob {
   // Mob variables
   public int maxHealth;
   public int health;
+  public int rest;
   public int level = 1;
   public int xp = 0;
   private int base_attack = 1;
@@ -40,14 +41,12 @@ class Mob {
     this.xp += xp;
     if(this.xp > (100*level)) {
       set_level(level+1);
-
     }
   }
-  public void set_level(int level) { this.level = level; heal(); }
+  public void set_level(int level) { this.level = level; heal(); set_rest(); }
   public void set_base_attack(int base_attack) { this.base_attack = base_attack; }
   public void set_base_defense(int base_defense) { this.base_defense = base_defense; }
   public void set_base_health(int base_health) { this.base_health = base_health; }
-
   public int get_attack(){ return 1 + (int)((double)base_attack * (double)level * (Math.random()+1)); }
   public int get_max_health() { return 1 + (int)((double)level * (double)base_health * 1.5); }
   // (type)variable
@@ -55,6 +54,8 @@ class Mob {
   // int 5 -> double 5.0
   // 5 * 1.5
   public void heal() { health = get_max_health(); }
+  // Set rest should rest rest counter on level up or use of pheinix down
+  public void set_rest() { rest = rest; }
   // int = 5
   // double 1.5
   // float 1.5f

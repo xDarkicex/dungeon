@@ -21,36 +21,65 @@ public class Dungeon {
     // Main game loop.
     while(player.health > 0) {
       String s = console.readLine();
+      //player stats block
+      Writer.Say.blue("Player: Stats\n"+"Level: ["+player.level+"]");
+      Writer.Say.blue("Health: [HP "+player.health+"/"+player.get_max_health()+"]");
       Writer.Say.cyan(FlavorText.story_pieces[(int)(Math.random()*FlavorText.story_pieces.length)]);
-      double chance = Math.random();
-
-      // Monster spawn!
-      if(chance < .50) { battle(monsters[(int)(Math.random()*monsters.length)]); }
-
-      // Health Potion!
-      else if(chance < .80) { Writer.Say.green(FlavorText.potion()); player.potion++; player.inventory(); }
-
-      // Chest!
-      else if(chance < .98) {
-        Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
-        // Mimic!
-        if(Math.random() < 0.5) { battle(Mob.Monster.MIMIC); }
-        // Pheonix Down!
-        else { Writer.Say.green("You find a pheonix down within a chest"); player.pheonix++; player.inventory(); }
+      //end
+      int input = -1;
+      while(input == -1){
+      try {
+        Writer.Say.yellow("[1: Rest] [2: Continue]");
+        input = Integer.parseInt(console.readLine());
+      } catch(NumberFormatException e) {
+        Writer.Say.red("You've got to input a valid number");
       }
-      // Trap!
-      else {
-        String[] trap = FlavorText.trap();
-        Writer.Say.red(trap[0]);
-        // Safe
-        if(Math.random() < 0.25) { Writer.Say.blue(trap[1]); }
-        // Hurt
-        else if(Math.random() < 0.75) { int damage = 7 * player.level; player.health -= damage; Writer.Say.red(trap[2]); }
-        // Killed
-        else { Writer.Say.red(trap[3]); player.kill(); }
+      if((input < 1) || (input > 2)) {
+        Writer.Say.red("That's not an option! 1-2 please.");
+        input = -1;
+      }
+    }
+    switch(input) {
+      // rest
+      case 1:
+        // Writer.Say.yellow("Rested");
+        player.resting();
+        break;
+      // move on with story
+      case 2:
+        double chance = Math.random();
+
+        // Monster spawn!
+        if(chance < .50) { battle(monsters[(int)(Math.random()*monsters.length)]); }
+
+        // Health Potion!
+        else if(chance < .75) { Writer.Say.green(FlavorText.potion()); player.potion++; player.inventory(); }
+
+        // Chest!
+        else if(chance < .90) {
+          Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
+          // Mimic!
+          if(Math.random() < 0.25) { battle(Mob.Monster.MIMIC); }
+          // Pheonix Down!
+          else if(Math.random() < 70){ Writer.Say.green(FlavorText.potion()); player.potion++; player.inventory();  }
+          else { Writer.Say.green("You find a pheonix down within a chest"); player.pheonix++; player.inventory(); }
+        }
+        // Trap!
+        else {
+          String[] trap = FlavorText.trap();
+          Writer.Say.red(trap[0]);
+          // Safe
+          if(Math.random() < 0.25) { Writer.Say.blue(trap[1]); }
+          // Hurt
+          else if(Math.random() < 0.75) { int damage = 7 * player.level; player.health -= damage; Writer.Say.red(trap[2]); }
+          // Killed
+          else { Writer.Say.red(trap[3]); player.kill(); }
+          break;
+        }
       }
     }
   }
+
   // Start a battle with enemy
   public void battle(Mob.Monster e) {
     // Set the game's enemy to e. This way we can access it outside of this function easier.
@@ -77,7 +106,7 @@ public class Dungeon {
       player.add_xp(xp_gained);
       if(player.level > previous_level) {
         // You leveled up
-        Writer.Say.green("** **** Congrats! You leveled up! **** **");
+        Writer.Say.green(FlavorText.level_up[(int)(Math.random()*FlavorText.level_up.length)]+"[Player level: "+player.level+"]");
       }
     }
   }
@@ -127,6 +156,7 @@ public class Dungeon {
 class Player extends Mob {
   public int potion = (int)Math.floor(Math.random()*3);
   public int pheonix = 0;
+  public int rest = 3;
   // Player() { System.out.println("Player created"); }
   public void use_potion() {
     if(potion > 0) {
@@ -137,6 +167,17 @@ class Player extends Mob {
       if (health > get_max_health()) { heal(); }
     }
     else { Writer.say("You don't have a potion to use!"); }
+  }
+
+  public void resting(){
+    if(rest > 0){
+      rest--;
+      int boost = 10 + (int)((double)level * 1.5);
+      health += boost;
+      Writer.Say.blue("You are well rested! +"+boost+" HP!");
+      if (health > get_max_health()) { heal(); }
+    }
+    else { Writer.say("You Cant Rest just yet!"); }
   }
   public void inventory() {
     Writer.say("You have "+this.potion+" potions and "+this.pheonix+" pheonix downs.");
