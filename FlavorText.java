@@ -9,6 +9,12 @@ public class FlavorText {
     "You settle down for the night",
     "You lamp is running out of oil",
     "A chill rattles your bones as you gasp for breath waking from a night terror"
+    "You hear hissing",
+    "Null, this isnt an error just checking...",
+    "Sleep did not come easily that night in the depth of the dungeon for the the wall only portrayed the deformed, the decrepit and the damned. Sleep may never come easily you ever again.",
+    "You hear your mother calling you deeper into the dungeon.",
+    "A spider bites your toe."
+
   };
   public static final String[][] traps = new String[][] {
     { "You trigger a tripwire", "Luckily, you fell causing an arrow to fly above your head", "You took an arrow to the knee!", "The arrow pierced your heart, killing you." },
