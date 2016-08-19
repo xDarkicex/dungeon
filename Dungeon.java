@@ -3,6 +3,7 @@
 import java.io.Console;
 import java.io.PrintStream;
 
+
 public class Dungeon {
   private static Game game = new Game();
   public static void main(String args[]){ game.run(); }
@@ -78,19 +79,16 @@ class Game {
   private Console console;
   // private PrintStream out = System.out;
   Game() { }
-  public void puts(Object string) { System.out.println(string); }
+  public void puts(Object string) { Writer.say(string); }
   public void run(){
     console = System.console();
+    puts("Welcome to the dungeon.");
     while(player.health > 0) {
+      String s = console.readLine();
+      clear();
       puts("You take a step in the dungeon...");
       int chance = (int)Math.floor(Math.random()*100);
-      puts(chance);
-      if(chance < 50) {
-        // Monster
-        puts("Monster's aren't added yet.");
-        Mob.Monster monster = Mob.Monster.SLIME;
-        puts(monster);
-      }
+      if(chance < 50) { battle(monsters[(int)(Math.random()*monsters.length)]); }
       else if(chance < 80) {
         // Health Potion
         puts(potion_text[(int)(Math.random()*potion_text.length)]);
@@ -127,7 +125,6 @@ class Game {
         }
         else { puts(trap[3]); player.kill(); }
       }
-      String s = console.readLine();
     }
   }
   // Battle Mechanics
@@ -136,12 +133,14 @@ class Game {
     // set_level will automatically heal them, it's like leveling up.
     enemy.set_level(player.level);
     // Flavor text!
-    puts(enemy.description);
+    Writer.Say.danger(enemy.description);
     while((enemy.mob.health > 0) && (player.health > 0)) {
+      clear();
       puts("You: [HP "+player.health+"/"+player.get_max_health()+"]");
       puts(enemy.name + ": [HP "+enemy.mob.health+"/"+enemy.mob.get_max_health()+"]");
       player_turn(enemy);
-      // monster_turn
+      enemy_turn(enemy);
+      if(player.health < 0) { player.kill(); }
     }
     // finalize stuff!
     if(player.health > 0) {
@@ -155,9 +154,6 @@ class Game {
         puts("** **** Congrats! You leveled up! **** **");
       }
     }
-    // set_xp(){
-    //   player.set_xp = (int) 10
-    // }
   }
   public void player_turn(Mob.Monster enemy) {
     int input = -1;
@@ -177,8 +173,9 @@ class Game {
     switch(input) {
       case 1:
         // Attack
-        // puts((enemy.mob.health) && (player.mob.health);
-        enemy.mob.health -= player.get_attack();
+        int damage = player.get_attack();
+        enemy.mob.health -= damage;
+        puts("You attack dealing "+damage+" damage!");
         break;
       case 2:
         // Run!
@@ -192,22 +189,29 @@ class Game {
     }
 
   }
-  // ememy attacks
-  public void enemy_turn(player){
-    int  turn = 1;
-    while(turn == 1){
-      int damage = 7 * player.level;
-      player.health -= damage;
-      turn++;
-    }
+  public void enemy_turn(Mob.Monster enemy){
+    // Enemy's turn. I suppose we could have enemies do plenty of things but for now they'll just attack
+    int damage = enemy.get_attack();
+    player.health -= damage;
+    puts("The "+enemy.name+" attacks dealing "+damage+" damage!");
+  }
+  public void clear() {
+    System.out.flush();
+    // puts("Clearing");
+    // try {
+    //   puts("Try");
+    //   final String os = System.getProperty("os.name");
+    //   String command = (os.contains("Windows"))? "cls" : "clear";
+    //   Runtime.getRuntime().exec(command);
+    //   puts("Tried?");
+    // }
+    // catch (final Exception e) { puts("\n\n\n\n\n\n\n\n\n"); }
   }
 }
 class Player extends Mob {
   public int potion = (int)Math.floor(Math.random()*3);
   public int pheonix = 0;
-  Player() {
-    System.out.println("Player created");
-  }
+  Player() { System.out.println("Player created"); }
   public void use_potion() {
     if(potion > 0) {
       potion--;

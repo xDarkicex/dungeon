@@ -48,7 +48,7 @@ class Mob {
   public void set_base_defense(int base_defense) { this.base_defense = base_defense; }
   public void set_base_health(int base_health) { this.base_health = base_health; }
 
-  public int get_attack(){ return 1 + (int)((double)base_attack * (double)level * 0.5); }
+  public int get_attack(){ return 1 + (int)((double)base_attack * (double)level * (Math.random()+1)); }
   public int get_max_health() { return 1 + (int)((double)level * (double)base_health * 1.5); }
   // (type)variable
   // This is how you cast. Casting basically just moves one type to another.
