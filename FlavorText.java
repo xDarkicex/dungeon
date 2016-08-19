@@ -1,7 +1,14 @@
 public class FlavorText {
   public static final String[] story_pieces = new String[]{
     "You take a step into the Dungeon...",
-    "You follow the the cold winds, deeper into the dungeon."
+    "You follow the the cold winds, deeper into the dungeon.",
+    "A spider crosses your path, you change directions",
+    "The wind is colder down here!",
+    "You hear shrieking in the background.",
+    "Mist gathers at your feet",
+    "You settle down for the night",
+    "You lamp is running out of oil",
+    "A chill rattles your bones as you gasp for breath waking from a night terror"
   };
   public static final String[][] traps = new String[][] {
     { "You trigger a tripwire", "Luckily, you fell causing an arrow to fly above your head", "You took an arrow to the knee!", "The arrow pierced your heart, killing you." },
