@@ -29,7 +29,7 @@ public class Dungeon {
       int input = -1;
       while(input == -1){
         try {
-          Writer.yellow("[1: Continue] [2: Rest]");
+          Writer.yellow("[1: Continue]" + ((player.rest > 0)? " [2: Rest]":""));
           input = Integer.parseInt(console.readLine());
         } catch(NumberFormatException e) {
           Writer.red("You've got to input a valid number");
