@@ -17,7 +17,7 @@ public class Player extends Mob {
     // This is a Mob method, we're overriding it though!
     int previous_level = level;
     // Let's call the original add_xp method, and give it the amount of XP we're gaining.
-    super(amount);
+    super.add_xp(amount);
     // Now let's check if we leveled up.
     if(previous_level < level) {
       // We did! Reset rest.
