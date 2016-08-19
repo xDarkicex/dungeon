@@ -1,4 +1,5 @@
 public class FlavorText {
+
   public static final String[] story_pieces = new String[]{
     "You take a step into the Dungeon...",
     "You follow the the cold winds, deeper into the dungeon.",
@@ -11,10 +12,28 @@ public class FlavorText {
     "A chill rattles your bones as you gasp for breath waking from a night terror",
     "You hear hissing",
     "Null, this isnt an error just checking...",
-    "Sleep did not come easily that night in the depth of the dungeon for the the wall only portrayed the deformed, the decrepit and the damned. Sleep may never come easily you ever again.",
+    "Sleep did not come easily that night in the depths of the dungeon for the the walls only portrayed the deformed,\n the decrepit and the damned. Sleep may never come easily to you ever again.",
     "You hear your mother calling you deeper into the dungeon.",
     "A spider bites your toe."
 
+  };
+  public static final String[] run_away = new String[]{
+    "You cant Run, From a trainer Battle!!!",
+    "Running away like a little Bitch.",
+    "I wouldn't leave if I were you.",
+    "Please don't leave, there's more demons to toast!",
+    "Go ahead and run. See if I care.",
+    "You want to run? Then, thou hast lost an eighth!",
+    "Get outta here and go back to your boring programs.",
+    "Fuck you, pussy!",
+    "Get the fuck out!",
+    "Afraid now?, DOS Is so much worse",
+    "You run and I'll jizz in your cystholes!",
+    "Hey, Caaz! Can we say 'Fuck' in this game?",
+    "You're a fucking wimp!",
+    "Are you sure you want to run? Boo will miss you...",
+    "Will you now run with such reckless abandon?",
+    "I hath heardth that thou liketh kips of the mud"
   };
   public static final String[][] traps = new String[][] {
     { "You trigger a tripwire", "Luckily, you fell causing an arrow to fly above your head", "You took an arrow to the knee!", "The arrow pierced your heart, killing you." },
@@ -72,6 +91,7 @@ public class FlavorText {
   public static String potion() { return text_from(FlavorText.potions); }
   public static String story() { return text_from(FlavorText.story_pieces); }
   public static String unarmed() { return text_from(FlavorText.attack_unarmed); }
+  public static String run_away() { return text_from(FlavorText.run_away); }
   public static String chest() { return text_from(FlavorText.chests); }
   public static String[] trap() { return object_from(FlavorText.traps); }
 }

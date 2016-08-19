@@ -107,7 +107,7 @@ public class Dungeon {
         break;
       // Run!
       case 2:
-        Writer.Say.red("Can't run!");
+        Writer.Say.red(FlavorText.run_away[(int)(Math.random()*FlavorText.run_away.length)]);
         break;
       // Potion!
       case 3:
