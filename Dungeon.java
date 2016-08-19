@@ -21,24 +21,12 @@ public class Dungeon {
     // Main game loop.
     while(player.health > 0) {
       String s = console.readLine();
-      //player stats block
+      // Player stats block
       Writer.blue("Player: Stats\n"+"Level: ["+player.level+"]");
       Writer.blue("Health: [HP "+player.health+"/"+player.get_max_health()+"]");
       Writer.cyan(FlavorText.story_pieces[(int)(Math.random()*FlavorText.story_pieces.length)]);
-      //end
-      int input = -1;
-      while(input == -1){
-        try {
-          Writer.yellow("[1: Continue]" + ((player.rest > 0)? " [2: Rest]":""));
-          input = Integer.parseInt(console.readLine());
-        } catch(NumberFormatException e) {
-          Writer.red("You've got to input a valid number");
-        }
-        if((input < 1) || (input > 2)) {
-          Writer.red("That's not an option! 1-2 please.");
-          input = -1;
-        }
-      }
+      // end
+      int input = Interaction.choose(new String[]{"Continue","Rest"});
       switch(input) {
         case 1:
           double chance = Math.random();
@@ -111,19 +99,8 @@ public class Dungeon {
   }
   // Player turn!
   public void player_turn() {
-    int input = -1;
-    while(input == -1){
-      try {
-        Writer.yellow("[1: Attack] [2: Run]"+((player.potion>0)? " [3: Potion ("+player.potion+" left)]" : ""));
-        input = Integer.parseInt(console.readLine());
-      } catch(NumberFormatException e) {
-        Writer.red("You've got to input a valid number");
-      }
-      if((input < 1) || (input > 3)) {
-        Writer.red("That's not an option! 1-3 please.");
-        input = -1;
-      }
-    }
+
+    int input = Interaction.choose(new String[]{"Attack","Run","Potion ("+player.potion+" left)"});
     // At this point, we should have a valid option.
     switch(input) {
       // Attack
