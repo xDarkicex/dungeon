@@ -1,5 +1,8 @@
 public class FlavorText {
-
+  public static final String[] story_pieces = new String[]{
+    "You take a step into the Dungeon...",
+    "You follow the the cold winds, deeper into the dungeon."
+  };
   public static final String[][] traps = new String[][] {
     { "You trigger a tripwire", "Luckily, you fell causing an arrow to fly above your head", "You took an arrow to the knee!", "The arrow pierced your heart, killing you." },
     { "You trigger a guillitine", "Thinking quickly you grab the shield of a fallen adventure, shielding yourself from near death.", "You try to dodge the massive blade, but it chops your right toe off.", "The Blade comes crushing down with intense speed slicing your head off, you see your body fall as the blood leaves your brain." },
@@ -43,6 +46,7 @@ public class FlavorText {
   public static String[] object_from(String[][] collection) { return collection[(int)(Math.random()*collection.length)]; }
   public static String text_from(String[] collection) { return collection[(int)(Math.random()*collection.length)].toString(); }
   public static String potion() { return text_from(FlavorText.potions); }
+  public static String story() { return text_from(FlavorText.story_pieces); }
   public static String chest() { return text_from(FlavorText.chests); }
   public static String[] trap() { return object_from(FlavorText.traps); }
 }

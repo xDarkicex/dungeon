@@ -16,10 +16,12 @@ public class Dungeon {
   // Main game code
   public void run(){
     Writer.say("Welcome to the dungeon.");
+    Writer.say("\n\n\n\n\n\n\n\n\n");
+    Writer.say(FlavorText.story_pieces[0]);
     // Main game loop.
     while(player.health > 0) {
       String s = console.readLine();
-      Writer.say("You take a step in the dungeon...");
+      Writer.Say.cyan(FlavorText.story_pieces[(int)(Math.random()*FlavorText.story_pieces.length)]);
       double chance = Math.random();
 
       // Monster spawn!

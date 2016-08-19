@@ -15,7 +15,7 @@ public class Writer {
       for(char c : string.toCharArray()) {
         if(with_color) { System.out.print(color+c+ANSI_RESET); }
         else { System.out.print(c); }
-        Thread.sleep(20);
+        Thread.sleep(5);
       }
     }
     catch(InterruptedException e) { }
@@ -28,6 +28,7 @@ public class Writer {
     public static final void green(Object o) { Writer.Say.with(o,Writer.ANSI_GREEN); }
     public static final void blue(Object o) { Writer.Say.with(o,Writer.ANSI_BLUE); }
     public static final void yellow(Object o) { Writer.Say.with(o,Writer.ANSI_YELLOW); }
+    public static final void cyan(Object o) { Writer.Say.with(o,Writer.ANSI_CYAN); }
     // Aliases to make life interesting
     public static final void debug(Object o) { Writer.Say.yellow(o); }
   }
