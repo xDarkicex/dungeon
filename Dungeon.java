@@ -102,7 +102,8 @@ public class Dungeon {
       case 1:
         int damage = player.get_attack();
         enemy.mob.health -= damage;
-        Writer.Say.blue("You attack dealing "+damage+" damage!");
+        Writer.Say.blue(FlavorText.attack_unarmed[(int)(Math.random()*FlavorText.attack_unarmed.length)]+" "+damage+" damage!");
+
         break;
       // Run!
       case 2:

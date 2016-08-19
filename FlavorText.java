@@ -8,7 +8,7 @@ public class FlavorText {
     "Mist gathers at your feet",
     "You settle down for the night",
     "You lamp is running out of oil",
-    "A chill rattles your bones as you gasp for breath waking from a night terror"
+    "A chill rattles your bones as you gasp for breath waking from a night terror",
     "You hear hissing",
     "Null, this isnt an error just checking...",
     "Sleep did not come easily that night in the depth of the dungeon for the the wall only portrayed the deformed, the decrepit and the damned. Sleep may never come easily you ever again.",
@@ -56,10 +56,22 @@ public class FlavorText {
     "You pick up a potion from the cold dead hands of your mothers ghost made real.",
     "You are made to endure the trial of nine, you are rewarded with a potion.. oh.. joy.."
   };
+  public static final String[] attack_unarmed = new String[]{
+    "You flail wildly",
+    "fist clentched, you throw a punch directly for the dick",
+    "Body slam",
+    "Kick",
+    "Punch",
+    "Hyper fang",
+    "twisting wildly you poke your enemy.",
+    "upper cut",
+    "grapping for anything near by, you find a stick, it breaks as you bring it crashing down on your foes skull."
+  };
   public static String[] object_from(String[][] collection) { return collection[(int)(Math.random()*collection.length)]; }
   public static String text_from(String[] collection) { return collection[(int)(Math.random()*collection.length)].toString(); }
   public static String potion() { return text_from(FlavorText.potions); }
   public static String story() { return text_from(FlavorText.story_pieces); }
+  public static String unarmed() { return text_from(FlavorText.attack_unarmed); }
   public static String chest() { return text_from(FlavorText.chests); }
   public static String[] trap() { return object_from(FlavorText.traps); }
 }
