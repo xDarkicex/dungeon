@@ -21,15 +21,14 @@ public class Writer {
     catch(InterruptedException e) { }
   }
   public static final void say(Object obj) { write(obj.toString(),"",false); }
-  public static class Say {
-    public static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true); }
-    // Colors!
-    public static final void red(Object o) { Writer.Say.with(o,Writer.ANSI_RED); }
-    public static final void green(Object o) { Writer.Say.with(o,Writer.ANSI_GREEN); }
-    public static final void blue(Object o) { Writer.Say.with(o,Writer.ANSI_BLUE); }
-    public static final void yellow(Object o) { Writer.Say.with(o,Writer.ANSI_YELLOW); }
-    public static final void cyan(Object o) { Writer.Say.with(o,Writer.ANSI_CYAN); }
-    // Aliases to make life interesting
-    public static final void debug(Object o) { Writer.Say.yellow(o); }
-  }
+  // With color helper
+  private static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true); }
+  // Colors!
+  public static final void red(Object o) { Writer.with(o,ANSI_RED); }
+  public static final void green(Object o) { Writer.with(o,ANSI_GREEN); }
+  public static final void blue(Object o) { Writer.with(o,ANSI_BLUE); }
+  public static final void yellow(Object o) { Writer.with(o,ANSI_YELLOW); }
+  public static final void cyan(Object o) { Writer.with(o,ANSI_CYAN); }
+  // Aliases to make life interesting
+  public static final void debug(Object o) { Writer.yellow(o); }
 }
