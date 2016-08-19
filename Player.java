@@ -1,5 +1,5 @@
 public class Player extends Mob {
-  public int potion = (int)Math.floor(Math.random()*3);
+  public int potion = (int)(Math.random()*3);
   public int pheonix = 0;
   public int rest = 3;
   // Player() { System.out.println("Player created"); }
@@ -13,8 +13,18 @@ public class Player extends Mob {
     }
     else { Writer.say("You don't have a potion to use!"); }
   }
-
-  public void rest(){
+  public void add_xp(int amount) {
+    // This is a Mob method, we're overriding it though!
+    int previous_level = level;
+    // Let's call the original add_xp method, and give it the amount of XP we're gaining.
+    super(amount);
+    // Now let's check if we leveled up.
+    if(previous_level < level) {
+      // We did! Reset rest.
+      rest = 3;
+    }
+  }
+  public void rest() {
     if(rest > 0){
       rest--;
       int boost = 10 + (int)((double)level * 1.5);

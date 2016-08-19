@@ -39,9 +39,7 @@ class Mob {
   }
   public void add_xp(int xp) {
     this.xp += xp;
-    if(this.xp > (100*level)) {
-      set_level(level+1);
-    }
+    if(this.xp > (100*level)) { set_level(level+1); }
   }
   public void set_level(int level) { this.level = level; heal(); set_rest(); }
   public void set_base_attack(int base_attack) { this.base_attack = base_attack; }

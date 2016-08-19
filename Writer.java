@@ -1,4 +1,3 @@
-
 public class Writer {
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_BLACK = "\u001B[30m";
