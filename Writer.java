@@ -9,8 +9,26 @@ public class Writer {
   public static final String ANSI_PURPLE = "\u001B[35m";
   public static final String ANSI_CYAN = "\u001B[36m";
   public static final String ANSI_WHITE = "\u001B[37m";
-  public static final void say(Object obj) { System.out.println(obj); }
+  public static final void write(String string, String color, boolean with_color) {
+    string += "\n";
+    try {
+      for(char c : string.toCharArray()) {
+        if(with_color) { System.out.print(color+c+ANSI_RESET); }
+        else { System.out.print(c); }
+        Thread.sleep(20);
+      }
+    }
+    catch(InterruptedException e) { }
+  }
+  public static final void say(Object obj) { write(obj.toString(),"",false); }
   public static class Say {
-    public static final void danger(Object o) { Writer.say(Writer.ANSI_RED+o+Writer.ANSI_RESET); }
+    public static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true); }
+    // Colors!
+    public static final void red(Object o) { Writer.Say.with(o,Writer.ANSI_RED); }
+    public static final void green(Object o) { Writer.Say.with(o,Writer.ANSI_GREEN); }
+    public static final void blue(Object o) { Writer.Say.with(o,Writer.ANSI_BLUE); }
+    public static final void yellow(Object o) { Writer.Say.with(o,Writer.ANSI_YELLOW); }
+    // Aliases to make life interesting
+    public static final void debug(Object o) { Writer.Say.yellow(o); }
   }
 }

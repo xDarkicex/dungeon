@@ -112,10 +112,7 @@ class Game {
         // Insta-death
         String[] trap = trap_text[(int)(Math.random()*trap_text.length)];
         puts(trap[0]);
-        if(Math.random() < 0.25) {
-          //
-          puts(trap[1]);
-        }
+        if(Math.random() < 0.25) { puts(trap[1]); }
         else if(Math.random() < 0.75) {
           // Hurt
           int damage = 7 * player.level;
@@ -133,14 +130,14 @@ class Game {
     // set_level will automatically heal them, it's like leveling up.
     enemy.set_level(player.level);
     // Flavor text!
-    Writer.Say.danger(enemy.description);
+    Writer.Say.red(enemy.description);
     while((enemy.mob.health > 0) && (player.health > 0)) {
       clear();
       puts("You: [HP "+player.health+"/"+player.get_max_health()+"]");
       puts(enemy.name + ": [HP "+enemy.mob.health+"/"+enemy.mob.get_max_health()+"]");
       player_turn(enemy);
       enemy_turn(enemy);
-      if(player.health < 0) { player.kill(); }
+      if(player.health <= 0) { player.kill(); }
     }
     // finalize stuff!
     if(player.health > 0) {
@@ -229,14 +226,14 @@ class Player extends Mob {
   }
   public boolean kill() {
     if(this.pheonix > 0) {
-      System.out.println("You narrowly escape death thanks to your pheonix down.");
+      Writer.Say.blue("You narrowly escape death thanks to your pheonix down.");
       this.pheonix--;
       heal();
       inventory();
       return false;
     }
     else {
-      System.out.println("You've died. Game over.");
+      Writer.Say.red("You've died. Game over.");
       this.health = 0;
       return true;
     }
