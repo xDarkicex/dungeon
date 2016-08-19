@@ -1,5 +1,4 @@
-
-class Player extends Mob {
+public class Player extends Mob {
   public int potion = (int)Math.floor(Math.random()*3);
   public int pheonix = 0;
   public int rest = 3;

@@ -1,5 +1,4 @@
 public class FlavorText {
-
   public static final String[] story_pieces = new String[]{
     "You take a step into the Dungeon...",
     "You follow the the cold winds, deeper into the dungeon.",
@@ -15,7 +14,6 @@ public class FlavorText {
     "Sleep did not come easily that night in the depths of the dungeon for the the walls only portrayed the deformed,\n the decrepit and the damned. Sleep may never come easily to you ever again.",
     "You hear your mother calling you deeper into the dungeon.",
     "A spider bites your toe."
-
   };
   public static final String[] level_up = new String[]{
     "** **** Congrats! You leveled up! **** **",
