@@ -99,7 +99,7 @@ public class FlavorText {
   public static String potion() { return text_from(FlavorText.potions); }
   public static String story() { return text_from(FlavorText.story_pieces); }
   public static String unarmed() { return text_from(FlavorText.attack_unarmed); }
-    public static String level_up() { return text_from(FlavorText.level_up); }
+  public static String level_up() { return text_from(FlavorText.level_up); }
   public static String run_away() { return text_from(FlavorText.run_away); }
   public static String chest() { return text_from(FlavorText.chests); }
   public static String[] trap() { return object_from(FlavorText.traps); }

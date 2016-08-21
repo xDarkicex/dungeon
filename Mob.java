@@ -19,7 +19,7 @@ class Mob {
     int get_attack() { return mob.get_attack(); }
   }
   // Mob variables
-  public int maxHealth;
+  // public int maxHealth;
   public int health;
   public int rest;
   public int level = 1;

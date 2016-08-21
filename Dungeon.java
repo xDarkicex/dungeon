@@ -20,12 +20,9 @@ public class Dungeon {
     Writer.say(FlavorText.story_pieces[0]);
     // Main game loop.
     while(player.health > 0) {
-      String s = console.readLine();
-      // Player stats block
-      Writer.blue("Player: Stats\n"+"Level: ["+player.level+"]");
-      Writer.blue("Health: [HP "+player.health+"/"+player.get_max_health()+"]");
-      Writer.cyan(FlavorText.story_pieces[(int)(Math.random()*FlavorText.story_pieces.length)]);
-      // end
+      // String s = console.readLine();
+      Writer.purple(player.toString());
+      Writer.cyan(FlavorText.story());
       int input = Interaction.choose(new String[]{"Continue","Rest"});
       switch(input) {
         case 1:

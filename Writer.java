@@ -27,6 +27,7 @@ public class Writer {
   public static final void green(Object o) { Writer.with(o,ANSI_GREEN); }
   public static final void blue(Object o) { Writer.with(o,ANSI_BLUE); }
   public static final void yellow(Object o) { Writer.with(o,ANSI_YELLOW); }
+  public static final void purple(Object o) { Writer.with(o,ANSI_PURPLE); }
   public static final void cyan(Object o) { Writer.with(o,ANSI_CYAN); }
   // Aliases to make life interesting
   public static final void debug(Object o) { Writer.yellow(o); }
