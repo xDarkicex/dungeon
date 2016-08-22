@@ -8,16 +8,15 @@ public class Writer {
   public static final String ANSI_PURPLE = "\u001B[35m";
   public static final String ANSI_CYAN = "\u001B[36m";
   public static final String ANSI_WHITE = "\u001B[37m";
+  public static final void clear() { System.out.print("\033[H\033[2J"); System.out.flush(); }
   public static final void write(String string, String color, boolean with_color) {
     string += "\n";
-    try {
-      for(char c : string.toCharArray()) {
-        if(with_color) { System.out.print(color+c+ANSI_RESET); }
-        else { System.out.print(c); }
-        Thread.sleep(5);
-      }
+    for(char c : string.toCharArray()) {
+      if(with_color) { System.out.print(color+c+ANSI_RESET); }
+      else { System.out.print(c); }
+      try { Thread.sleep(5); }
+      catch(InterruptedException e) { }
     }
-    catch(InterruptedException e) { }
   }
   public static final void say(Object obj) { write(obj.toString(),"",false); }
   // With color helper
