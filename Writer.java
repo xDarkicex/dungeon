@@ -19,8 +19,8 @@ public class Writer {
     }
   }
   public static final void say(Object obj) { write(obj.toString(),"",false); }
-  // With color helper
-  private static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true); }
+  // Color helper
+  public static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true); }
   // Colors!
   public static final void red(Object o) { Writer.with(o,ANSI_RED); }
   public static final void green(Object o) { Writer.with(o,ANSI_GREEN); }
