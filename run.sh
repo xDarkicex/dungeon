@@ -1,1 +1,1 @@
-java -jar Dungeon.jar
+java -jar $1.jar
