@@ -15,8 +15,8 @@ public class Dungeon {
   };
   // Main game code
   public void run(){
+    Writer.clear();
     Writer.say("Welcome to the dungeon.");
-    Writer.say("\n\n\n\n\n\n\n\n\n");
     Writer.say(FlavorText.story_pieces[0]);
     // Main game loop.
     while(player.health > 0) {
@@ -61,6 +61,7 @@ public class Dungeon {
           player.rest();
           break;
       }
+      Writer.clear();
     }
   }
 
