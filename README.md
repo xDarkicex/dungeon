@@ -11,5 +11,17 @@ function grande() {
 	rm -f *.class;
 }
 # build and run
-function venti() { grande $1 && java -jar $1.jar; }
+function venti() {
+#capture current directory if no arguments given
+if (( $# !=1 ))
+then
+current_dir=${PWD##*/} &&
+foo=`echo ${current_dir:0:1} | tr  '[a-z]' '[A-Z]'`${current_dir:1}
+grande $foo &&
+java -jar $foo.jar
+else
+grande $1 &&
+java -jar $1.jar;
+fi
+}
 `
