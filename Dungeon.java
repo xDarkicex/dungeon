@@ -3,6 +3,7 @@
 import java.io.Console;
 import java.io.PrintStream;
 
+import events.*;
 
 public class Dungeon {
   // Actual instance of the Game
