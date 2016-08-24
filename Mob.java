@@ -2,7 +2,14 @@ class Mob {
   public enum Monster {
     MIMIC ("Mimic", "That's no chest!", 5,5,2),
     SLIME ("Slime", "A wobbly creature jumps in front of you!", 1, 1, 1),
+    BLOATFLY ("Bloat Fly", "a fly buzz's in for the attack", 2,1,1),
+    SPIDER ("Spider", "Large Spider attacks.", 1, 3, 3),
+    LARGESPIDER ("Giant Spider", "Giant spider blocks your path.", 4, 5, 3),
     VAMPIRE ("Vampire", "Attack from the shadows", 10,10,10),
+    //RATS
+    SICKLYRAT ("Sick Rat", "Sickly rat appears", 1, 1, 1),
+    RAT ("Rat", "Attacked by a Rat", 3, 1, 2),
+    ANGERYRAT ("Angery Rat", "Rabit Rat Jumps at you.", 5, 2, 2),
     SKELETON ("Skeleton", "A scary spooky skeleton appears!", 3,1,1);
     public String name;
     public String description;

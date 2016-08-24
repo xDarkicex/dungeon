@@ -49,8 +49,10 @@ public class Player extends Mob {
       Writer.red("You've died. Game over.");
       this.health = 0;
       return true;
+
     }
   }
+
   public String toString() {
     // This is a default method that all Java objects have! We're overriding it.
     return "Player: [Level "+level+"] [HP "+health+"/"+get_max_health()+"] [Potions "+potion+"] [Pheonix Downs "+pheonix+"] [Rests "+rest+"]";
