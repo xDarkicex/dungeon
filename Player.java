@@ -2,6 +2,15 @@ public class Player extends Mob {
   public int potion = (int)(Math.random()*3);
   public int pheonix = 0;
   public int rest = 3;
+  public int player_type;
+
+  public void set_player_type(int player_type) {
+    this.player_type = player_type; // 1 = human 2 = orc;
+  }
+  public int get_player_type() {
+    return player_type;
+  }
+
   // Player() { System.out.println("Player created"); }
   public void use_potion() {
     if(potion > 0) {

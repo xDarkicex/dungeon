@@ -1,4 +1,8 @@
 public class FlavorText {
+  public static final String[] player_types = new String[]{
+    "Human",
+    "Orc"
+  };
   public static final String[] story_pieces = new String[]{
     "You take a step into the Dungeon...",
     "You follow the the cold winds, deeper into the dungeon.",
