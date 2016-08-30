@@ -28,9 +28,10 @@ public class Dungeon {
     Writer.say(FlavorText.story_pieces[0]);
     // Get and set user type
     int user_selection = Interaction.choose(new String[]{"Human","Orc"});
+    // Set the player_type
     player.set_player_type(user_selection-1);
-    Writer.cyan("Welcome, " + FlavorText.player_types[user_selection-1]);
-    player.set_player_type(user_selection);
+    // Welcome the user
+    Writer.cyan("Welcome, " + FlavorText.player_types[player.get_player_type()]);
     // Main game loop.
     while(player.health > 0) {
       // String s = console.readLine();
