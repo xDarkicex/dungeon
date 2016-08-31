@@ -24,12 +24,13 @@ public class Dungeon {
 
   public void run(){
     Writer.clear();
-    // Get player type
-    int user_selection = Interaction.choose(FlavorText.player_types);
-    // Set the player_type
-    player.set_player_type(user_selection-1);
-    // Welcome the user
-    Writer.say("Welcome to the dungeon, " + FlavorText.player_types[player.get_player_type()] + "!");
+    // Get player race
+    Writer.say("Build Adventurer, Select Race: ");
+    int user_selection = Interaction.choose(FlavorText.player_race);
+    // Set the player_race
+    player.set_player_race(user_selection-1);
+    // Welcome the user adrians thing >> FlavorText.player_type[player.get_player_type()]
+    Writer.say("Welcome to the dungeon, " + FlavorText.player_race() + "!");
     Writer.say(FlavorText.story_pieces[0]);
     // Main game loop.
     while(player.health > 0) {
