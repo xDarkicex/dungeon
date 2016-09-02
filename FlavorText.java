@@ -1,4 +1,11 @@
 public class FlavorText {
+  public static final String[] player_race = new String[]{
+    "Human",
+    "Wood Elf",
+    "Dark Elf",
+    "High Elf",
+    "Orc"
+  };
   public static final String[] story_pieces = new String[]{
     "You take a step into the Dungeon...",
     "You follow the the cold winds, deeper into the dungeon.",
@@ -96,6 +103,7 @@ public class FlavorText {
   };
   public static String[] object_from(String[][] collection) { return collection[(int)(Math.random()*collection.length)]; }
   public static String text_from(String[] collection) { return collection[(int)(Math.random()*collection.length)].toString(); }
+  public static String player_race() { return text_from(FlavorText.player_race); }
   public static String potion() { return text_from(FlavorText.potions); }
   public static String story() { return text_from(FlavorText.story_pieces); }
   public static String unarmed() { return text_from(FlavorText.attack_unarmed); }

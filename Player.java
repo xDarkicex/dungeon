@@ -2,6 +2,15 @@ public class Player extends Mob {
   public int potion = (int)(Math.random()*3);
   public int pheonix = 0;
   public int rest = 3;
+  public int player_race;
+
+  public void set_player_race(int player_race) {
+    this.player_race = player_race; // 1 = human 2 = orc;
+  }
+  public int get_player_race() {
+    return player_race;
+  }
+
   // Player() { System.out.println("Player created"); }
   public void use_potion() {
     if(potion > 0) {
@@ -51,8 +60,9 @@ public class Player extends Mob {
       return true;
     }
   }
+
   public String toString() {
     // This is a default method that all Java objects have! We're overriding it.
-    return "Player: [Level "+level+"] [HP "+health+"/"+get_max_health()+"] [Potions "+potion+"] [Pheonix Downs "+pheonix+"] [Rests "+rest+"]";
+    return "Player: [Race: "+FlavorText.player_race()+"] [Level "+level+"] [HP "+health+"/"+get_max_health()+"] [Potions "+potion+"] [Pheonix Downs "+pheonix+"] [Rests "+rest+"]";
   }
 }

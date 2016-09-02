@@ -12,12 +12,26 @@ public class Dungeon {
   private Mob.Monster enemy;
   private Mob.Monster[] monsters = new Mob.Monster[]{
     Mob.Monster.SLIME,
-    Mob.Monster.SKELETON
+    Mob.Monster.SKELETON,
+    Mob.Monster.VAMPIRE,
+    Mob.Monster.SICKLYRAT,
+    Mob.Monster.RAT,
+    Mob.Monster.BLOATFLY,
+    Mob.Monster.SPIDER,
+    Mob.Monster.LARGESPIDER,
+    Mob.Monster.ANGERYRAT
   };
   // Main game code
+
   public void run(){
     Writer.clear();
-    Writer.say("Welcome to the dungeon.");
+    // Get player race
+    Writer.say("Build Adventurer, Select Race: ");
+    int user_selection = Interaction.choose(FlavorText.player_race);
+    // Set the player_race
+    player.set_player_race(user_selection-1);
+    // Welcome the user adrians thing >> FlavorText.player_type[player.get_player_type()]
+    Writer.say("Welcome to the dungeon, " + FlavorText.player_race() + "!");
     Writer.say(FlavorText.story_pieces[0]);
     // Main game loop.
     while(player.health > 0) {
@@ -36,7 +50,7 @@ public class Dungeon {
           else if(chance < .75) { Writer.green(FlavorText.potion()); player.potion++; player.inventory(); }
 
           // Chest!
-          else if(chance < .90) {
+          else if(chance < .80) {
             Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
             // Mimic!
             if(Math.random() < 0.25) { battle(Mob.Monster.MIMIC); }
@@ -64,6 +78,7 @@ public class Dungeon {
       }
       Writer.clear();
     }
+
   }
 
   // Start a battle with enemy
@@ -126,5 +141,24 @@ public class Dungeon {
   }
   // Static bullshit
   private static Dungeon game = new Dungeon();
-  public static void main(String args[]){ game.run(); }
+  public static void main(String args[]){
+    game.run();
+    while(true){
+      Writer.yellow("Continue?");
+      int input = Interaction.choose(new String[]{"Yes","No"});
+
+      switch(input) {
+      // read cards
+      case 1:
+        game = new Dungeon();
+        game.run();
+      break;
+      // reenter values
+      case 2:
+      break;
+      }
+      break;
+    }
+  }
+
 }
