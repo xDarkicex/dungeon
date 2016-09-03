@@ -1,67 +1,34 @@
-class Mob {
-  public enum Monster {
-    MIMIC ("Mimic", "That's no chest!", 5,5,2),
-    SLIME ("Slime", "A wobbly creature jumps in front of you!", 1, 1, 1),
-    BLOATFLY ("Bloat Fly", "a fly buzz's in for the attack", 2,1,1),
-    SPIDER ("Spider", "Large Spider attacks.", 1, 3, 3),
-    LARGESPIDER ("Giant Spider", "Giant spider blocks your path.", 4, 5, 3),
-    VAMPIRE ("Vampire", "Attack from the shadows", 10,10,10),
-    //RATS
-    SICKLYRAT ("Sick Rat", "Sickly rat appears", 1, 1, 1),
-    RAT ("Rat", "Attacked by a Rat", 3, 1, 2),
-    ANGERYRAT ("Angery Rat", "Rabit Rat Jumps at you.", 5, 2, 2),
-    SKELETON ("Skeleton", "A scary spooky skeleton appears!", 3,1,1);
-    public String name;
-    public String description;
-    public Mob mob;
-    Monster(String name, String description, int base_attack, int base_defense, int base_health) {
-      System.out.println("Monster created");
-      this.name = name;
-      this.description = description;
-      this.mob = new Mob(base_attack,base_defense,base_health);
-    }
-    // enemy.mob.health
-    void heal() { mob.heal(); }
-    void set_level(int level) { mob.set_level(level); }
-    int get_attack() { return mob.get_attack(); }
-  }
-  // Mob variables
-  // public int maxHealth;
+public class Mob {
   public int health;
-  public int rest;
-  public int level = 1;
-  public int xp = 0;
-  private int base_attack = 1;
-  private int base_defense = 1;
-  private int base_health = 10;
-  Mob() { System.out.println("Living thing created!"); heal(); }
-  Mob(int base_attack, int base_defense, int base_health) {
-    // System.out.println("Monster created");
-    // this.name = name;
-    // this.description = description;
-    set_base_attack(base_attack);
-    set_base_defense(base_defense);
-    set_base_health(base_health);
-    // set_level(level);
+  public String name;
+  public Stats stats;
+  // flavors = String[]{ "Appearance", "Attack", "Defeat" }
+  public String[] flavors;
+  Mob() { }
+  Mob(Monster monster) {
+    name = monster.name;
+    stats = monster.stats;
+    flavors = monster.flavors;
+    stats.set_level(1);
+    heal();
   }
-  public void add_xp(int xp) {
-    this.xp += xp;
-    if(this.xp > (100*level)) { set_level(level+1); }
+  // Return true if leveled up
+  public void heal() {
+    health = stats.max_health();
+    // Writer.say("Healing to "+health);
   }
-  public void set_level(int level) { this.level = level; heal(); set_rest(); }
-  public void set_base_attack(int base_attack) { this.base_attack = base_attack; }
-  public void set_base_defense(int base_defense) { this.base_defense = base_defense; }
-  public void set_base_health(int base_health) { this.base_health = base_health; }
-  public int get_attack(){ return 1 + (int)((double)base_attack * (double)level * (Math.random()+1)); }
-  public int get_max_health() { return 1 + (int)((double)level * (double)base_health * 1.5); }
-  // (type)variable
-  // This is how you cast. Casting basically just moves one type to another.
-  // int 5 -> double 5.0
-  // 5 * 1.5
-  public void heal() { health = get_max_health(); }
-  // Set rest should rest rest counter on level up or use of pheinix down
-  public void set_rest() { rest = rest; }
-  // int = 5
-  // double 1.5
-  // float 1.5f
+  public boolean kill() {
+    health = 0;
+    return true;
+  }
+  // Return true if enemy dies.
+  public boolean attack(Mob defender) {
+    int attack = stats.get_attack() - defender.stats.get_defense();
+    attack = ((attack<0)?0:attack);
+    defender.health -= attack;
+    Writer.say(String.format(flavors[1],attack));
+    return !defender.living();
+  }
+  public boolean living() { return health > 0; }
+  public String toString() { return "["+name+"] [HP "+health+"/"+stats.max_health()+"]"; }
 }
