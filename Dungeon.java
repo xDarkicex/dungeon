@@ -3,14 +3,18 @@
 import java.io.Console;
 import java.io.PrintStream;
 
-import events.*;
-
 public class Dungeon {
   // Actual instance of the Game
   private Console console = System.console();
-  private Player player = new Player();
+  public Player player = new Player();
+  private Event[] events = new Event[] {
+    new ChestEvent(),
+    new ItemEvent(),
+    new MonsterEvent(),
+    new TrapEvent()
+  };
   private Mob.Monster enemy;
-  private Mob.Monster[] monsters = new Mob.Monster[]{
+  public Mob.Monster[] monsters = new Mob.Monster[]{
     Mob.Monster.SLIME,
     Mob.Monster.SKELETON,
     Mob.Monster.VAMPIRE,
@@ -31,7 +35,7 @@ public class Dungeon {
     // Set the player_race
     player.set_player_race(user_selection-1);
     // Welcome the user adrians thing >> FlavorText.player_type[player.get_player_type()]
-    Writer.say("Welcome to the dungeon, " + FlavorText.player_race() + "!");
+    Writer.say("Welcome to the dungeon!");
     Writer.say(FlavorText.story_pieces[0]);
     // Main game loop.
     while(player.health > 0) {
@@ -39,46 +43,10 @@ public class Dungeon {
       Writer.purple(player.toString());
       Writer.cyan(FlavorText.story());
       int input = Interaction.choose(new String[]{"Continue","Rest"});
-      switch(input) {
-        case 1:
-          double chance = Math.random();
-
-          // Monster spawn!
-          if(chance < .50) { battle(monsters[(int)(Math.random()*monsters.length)]); }
-
-          // Health Potion!
-          else if(chance < .75) { Writer.green(FlavorText.potion()); player.potion++; player.inventory(); }
-
-          // Chest!
-          else if(chance < .80) {
-            Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
-            // Mimic!
-            if(Math.random() < 0.25) { battle(Mob.Monster.MIMIC); }
-            // Pheonix Down!
-            else if(Math.random() < 70){ Writer.green(FlavorText.potion()); player.potion++; player.inventory();  }
-            else { Writer.green("You find a pheonix down within a chest"); player.pheonix++; player.inventory(); }
-          }
-          // Trap!
-          else {
-            String[] trap = FlavorText.trap();
-            Writer.red(trap[0]);
-            // Safe
-            if(Math.random() < 0.25) { Writer.blue(trap[1]); }
-            // Hurt
-            else if(Math.random() < 0.75) { int damage = 7 * player.level; player.health -= damage; Writer.red(trap[2]); }
-            // Killed
-            else { Writer.red(trap[3]); player.kill(); }
-          }
-          break;
-          // rest
-        case 2:
-          // Writer.yellow("Rested");
-          player.rest();
-          break;
-      }
       Writer.clear();
+      if(input == 1) { events[(int)(Math.random()*events.length)].execute(this); }
+      else { player.rest(); }
     }
-
   }
 
   // Start a battle with enemy
