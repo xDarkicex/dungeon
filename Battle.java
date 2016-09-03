@@ -23,9 +23,5 @@ public class Battle {
       Writer.blue(player.name+" wins! +"+xp+" XP");
       if(player.stats.add_xp(xp)) { Writer.blue("Level up!"); }
     }
-    else {
-      // You lost
-      Writer.red("The "+monster.name+" won this battle...");
-    }
   }
 }

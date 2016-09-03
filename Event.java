@@ -6,13 +6,7 @@ public abstract class Event {
 class ChestEvent extends Event {
   public void execute(Dungeon dungeon) {
     Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
-    // Mimic!
-    if(Math.random() < 0.25) {
-      new Battle(dungeon.player, new Mob(Monster.MIMIC));
-    }
-    // Pheonix Down!
-    else if(Math.random() < 70){ Writer.green(FlavorText.potion()); dungeon.player.potion++; dungeon.player.inventory();  }
-    else { Writer.green("You find a pheonix down within a chest"); dungeon.player.pheonix++; dungeon.player.inventory(); }
+    new Battle(dungeon.player, new Mob(Monster.MIMIC));
   }
 }
 class ItemEvent extends Event {
