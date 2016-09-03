@@ -108,25 +108,16 @@ public class Dungeon {
     Writer.red("The "+enemy.name+" attacks dealing "+damage+" damage!");
   }
   // Static bullshit
-  private static Dungeon game = new Dungeon();
+  private static Dungeon game;
   public static void main(String args[]){
-    game.run();
+    // game.run();
     while(true){
+      game = new Dungeon();
+      game.run();
       Writer.yellow("Continue?");
       int input = Interaction.choose(new String[]{"Yes","No"});
-
-      switch(input) {
-      // read cards
-      case 1:
-        game = new Dungeon();
-        game.run();
-      break;
-      // reenter values
-      case 2:
-      break;
-      }
-      break;
+      if(Interaction.choose(new String[]{"Yes","No"}) == 1) { continue; }
+      else { break; }
     }
   }
-
 }
