@@ -4,6 +4,13 @@ public class Mob {
   public Stats stats;
   public String[] flavors; // String[]{ "Appearance", "Attack", "Defeat" }
   Mob() { }
+  Mob(String name, Stats stats, String[] flavors) {
+    this.name = name;
+    this.stats = stats;
+    this.flavors = flavors;
+    stats.set_level(1);
+    heal();
+  }
   Mob(Monster monster) {
     name = monster.name;
     stats = monster.stats;

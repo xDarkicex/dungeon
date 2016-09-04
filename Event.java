@@ -2,7 +2,7 @@ public interface Event { public void execute(Dungeon dungeon); }
 class ChestEvent implements Event {
   public void execute(Dungeon dungeon) {
     Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
-    new Battle(dungeon.player, new Mob(Monster.MIMIC));
+    new Battle(dungeon.player, new Mob("Mimic", new Stats(10, 5,5), new String[]{"That's no chest!", "The mimic bounces up at you dealing %d damage!", "The frantic chest collapses." }));
   }
 }
 class StairEvent implements Event {
@@ -13,7 +13,7 @@ class StairEvent implements Event {
     Writer.say("You come across a staircase leading "+direction_text+".");
     if(Interaction.choose(new String[]{"Go "+direction_text+" the stairs", "Ignore them, continue exploring"}) == 1) {
       dungeon.depth += (direction)?1:-1;
-      Writer.say("You follow the stairs... Floor #"+dungeon.depth);
+      Writer.say("You follow the stairs... Floor "+dungeon.depth);
     }
   }
 }
@@ -35,12 +35,10 @@ class TrapEvent implements Event {
   }
 }
 class MonsterEvent implements Event {
-  private static Monster[] monsters = new Monster[] {
-    Monster.SLIME,
-    Monster.SPIDER
-  };
   public void execute(Dungeon dungeon) {
-    new Battle(dungeon.player, new Mob(MonsterEvent.monsters[(int)(Math.random()*MonsterEvent.monsters.length)]));
+    new Battle(dungeon.player, new Mob(
+      Monster.values()[(int)(Math.random()*Monster.values().length)])
+    );
     // dungeon.battle(dungeon.monsters[(int)(Math.random()*dungeon.monsters.length)]);
   }
 }

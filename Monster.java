@@ -1,5 +1,4 @@
 public enum Monster {
-  MIMIC ("Mimic", new Stats(10, 5,5), new String[]{"That's no chest!", "The mimic bounces up at you dealing %d damage!", "The frantic chest collapses." }),
   SLIME ("Slime", new Stats(3, 1,1), new String[]{"A wobbly creature jumps in front of you!", "Jumps frantically at you, dealing %d damage.", "The slime dissapates"}),
   SPIDER ("Spider", new Stats(5, 3,2), new String[]{"A spider swings down from above!", "The spider bites you", "The spider dies"});
   public String name;
