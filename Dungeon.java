@@ -1,6 +1,8 @@
 public class Dungeon {
+  public int depth = 1;
   public Player player = new Player();
   private Event[] events = new Event[] {
+    new StairEvent(),
     new ChestEvent(),
     new MonsterEvent(),
     new TrapEvent()
@@ -19,7 +21,6 @@ public class Dungeon {
     }
     Writer.red(player.name+" has died.");
   }
-
   public static void main(String args[]){
     while(true){
       (new Dungeon()).run();

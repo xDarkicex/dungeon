@@ -36,7 +36,7 @@ function venti() {
 - [ ] Re-enable resting
 - [ ] Dynamic items
 - [ ] Inventory system
-- [ ] Dungeon stairs
+- [x] Dungeon stairs
 - [ ] Save/Load features
 - [ ] Save death points
 - [ ] Monster appearances based on depth

@@ -5,6 +5,18 @@ class ChestEvent implements Event {
     new Battle(dungeon.player, new Mob(Monster.MIMIC));
   }
 }
+class StairEvent implements Event {
+  public void execute(Dungeon dungeon) {
+    boolean direction = (Math.random() < 0.5);
+    if(dungeon.depth <= 1) { direction = true; }
+    String direction_text = (direction)?"down":"up";
+    Writer.say("You come across a staircase leading "+direction_text+".");
+    if(Interaction.choose(new String[]{"Go "+direction_text+" the stairs", "Ignore them, continue exploring"}) == 1) {
+      dungeon.depth += (direction)?1:-1;
+      Writer.say("You follow the stairs... Floor #"+dungeon.depth);
+    }
+  }
+}
 class ItemEvent implements Event {
   public void execute(Dungeon dungeon) {
     Writer.say("This is an ItemEvent!");
