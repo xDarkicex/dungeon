@@ -6,9 +6,9 @@ public class Dungeon {
     new TrapEvent()
   };
   public void run(){
-    Writer.say("Welcome to the dungeon!");
+    Writer.say("Welcome to the dungeon, "+player.name+".");
     Writer.say(FlavorText.story_pieces[0]);
-    while(player.health > 0) {
+    while(player.living()) {
       Writer.purple(player.toString());
       Writer.cyan(FlavorText.story());
       int input = Interaction.choose(new String[]{"Continue","Rest"});
@@ -17,6 +17,7 @@ public class Dungeon {
       // TODO: Re-enable this
       else { Writer.yellow("Rest temporarily disabled"); }
     }
+    Writer.red(player.name+" has died.");
   }
 
   public static void main(String args[]){
