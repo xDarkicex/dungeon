@@ -1,5 +1,5 @@
 public class Stats {
-  public int level;
+  public int level = 1;
   private int vitality, attack, defense, xp;
   Stats(int level) {
     // Random roll via level

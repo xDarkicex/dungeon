@@ -10,9 +10,17 @@ public class Dungeon {
   };
   public void run(){
     Writer.say("Welcome to the dungeon, "+player.name+".");
+    if(player.name.equals("Pheonix")) {
+      player.stats = new Stats(100,100,100);
+      for(int x = 1; x < 1000; x++) { player.inventory.add_item(Item.PHEONIXDOWN); }
+    } else if(player.name.equals("Moleman")) {
+      depth=100;
+      player.stats = new Stats(50,50,50);
+      for(int x = 1; x < 1000; x++) { player.inventory.add_item(Item.POTION); }
+    }
     while(player.living()) {
       Writer.purple(player.toString());
-      Writer.cyan(FlavorText.story());
+      Writer.cyan("[Depth "+depth+"] "+FlavorText.story());
       int input = Interaction.choose(new String[]{"Continue","Rest"});
       Writer.clear();
       if(input == 1) { events[(int)(Math.random()*events.length)].execute(this); }

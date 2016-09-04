@@ -24,9 +24,7 @@ public class Battle {
           if(player.health >= max_health) { player.health = max_health; }
           Writer.blue("Potion used! +"+healing+" HP!");
         }
-        else {
-          Writer.red("You don't have a potion!");
-        }
+        else { Writer.red("You don't have a potion!"); }
       }
       // Monster's turn
       if(monster.attack(player)) { break; }
