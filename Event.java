@@ -2,7 +2,14 @@ public interface Event { public void execute(Dungeon dungeon); }
 class ChestEvent implements Event {
   public void execute(Dungeon dungeon) {
     Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
-    new Battle(dungeon.player, new Mob("Mimic", new Stats(10, 5,5), new String[]{"That's no chest!", "The mimic bounces up at you dealing %d damage!", "The frantic chest collapses." }));
+    if(Math.random() < 0.5) {
+      new Battle(dungeon.player, new Mob("Mimic", new Stats(10, 5,5), new String[]{"That's no chest!", "The mimic bounces up at you dealing %d damage!", "The frantic chest collapses." }));
+    }
+    else {
+      Item item = Item.values()[(int)(Math.random()*Item.values().length)];
+      Writer.blue("You open it up and find a "+item.name+" inside!");
+      dungeon.player.inventory.add_item(item);
+    }
   }
 }
 class StairEvent implements Event {
@@ -19,9 +26,8 @@ class StairEvent implements Event {
 }
 class ItemEvent implements Event {
   public void execute(Dungeon dungeon) {
-    // Writer.say("This is an ItemEvent!");
     Item item = Item.values()[(int)(Math.random()*Item.values().length)];
-    Writer.say("You found a "+item.name+" lying on the floor!");
+    Writer.blue("You found a "+item.name+" lying on the floor!");
     dungeon.player.inventory.add_item(item);
   }
 }

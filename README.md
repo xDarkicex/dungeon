@@ -35,7 +35,7 @@ function venti() {
 - [x] Name yourself
 - [ ] Re-enable resting
 - [ ] Dynamic items
-- [ ] Inventory system
+- [x] Inventory system
 - [x] Dungeon stairs
 - [ ] Save/Load features
 - [ ] Save death points

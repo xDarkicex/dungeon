@@ -23,7 +23,7 @@ public class Mob {
   // Return true if enemy dies.
   public boolean attack(Mob defender) {
     int attack = stats.get_attack() - defender.stats.get_defense();
-    attack = ((attack<0)?0:attack);
+    attack = ((attack<=0)?1:attack);
     defender.health -= attack;
     Writer.say(String.format(flavors[1],attack));
     return !defender.living();

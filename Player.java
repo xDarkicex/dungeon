@@ -7,6 +7,17 @@ public class Player extends Mob {
     stats.set_level(1);
     heal();
   }
+  public boolean living() {
+    if(!super.living()) {
+      if(inventory.use(Item.PHEONIXDOWN)) {
+        Writer.say("Thankfully you had a pheonix down on you to live another day.");
+        heal();
+        return true;
+      }
+      return false;
+    }
+    return true;
+  }
   public String toString() {
     return super.toString()+" "+inventory.toString();
   }

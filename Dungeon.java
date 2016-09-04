@@ -10,7 +10,6 @@ public class Dungeon {
   };
   public void run(){
     Writer.say("Welcome to the dungeon, "+player.name+".");
-    Writer.say(FlavorText.story_pieces[0]);
     while(player.living()) {
       Writer.purple(player.toString());
       Writer.cyan(FlavorText.story());
