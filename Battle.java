@@ -6,17 +6,27 @@ public class Battle {
     this.monster = monster;
     Writer.red(monster.flavors[0][(int)(Math.random()*monster.flavors[0].length)]);
     Writer.purple(player.flavors[0][(int)(Math.random()*player.flavors[0].length)]);
-    Writer.purple(player);
-    Writer.red(monster);
     while(true) {
       // Player's turn
-      int input = Interaction.choose(new String[]{"Attack","Run"});
+      Writer.purple(player);
+      Writer.red(monster);
+      int input = Interaction.choose(new String[]{"Attack","Run","Use Potion"});
       if(input == 1) {
         if(player.attack(monster)) { break; }
-      }
-      if(input == 2) {
+      } else if(input == 2) {
         Writer.say("You run from the battle!");
         break;
+      } else if(input == 3) {
+        if(player.inventory.use(Item.POTION)) {
+          int max_health = player.stats.max_health();
+          int healing = max_health/4 + 1;
+          player.health += healing;
+          if(player.health >= max_health) { player.health = max_health; }
+          Writer.blue("Potion used! +"+healing+" HP!");
+        }
+        else {
+          Writer.red("You don't have a potion!");
+        }
       }
       // Monster's turn
       if(monster.attack(player)) { break; }
