@@ -1,8 +1,3 @@
-// import java.util.ArrayList;
-// import java.util.Arrays;
-import java.io.Console;
-import java.io.PrintStream;
-
 public class Dungeon {
   public Player player = new Player();
   private Event[] events = new Event[] {
