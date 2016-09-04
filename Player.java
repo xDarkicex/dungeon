@@ -2,7 +2,7 @@ public class Player extends Mob {
   Inventory inventory = new Inventory();
   Player() {
     name = Interaction.get_string("Name your character");
-    stats = new Stats(10,5,5);
+    stats = new Stats(10,5,5,1,1,1,1);
     flavors = new String[][]{ {"You Square up; focusing your mind on the enemy, lets hope you paid attention in your karate classes!"}, {
       "You flail wildly damaging the opponent for %d damage.",
       "Fist clentched, you throw a punch directly for the dick. %d ddamage!",

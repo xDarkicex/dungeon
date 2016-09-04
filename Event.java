@@ -4,7 +4,7 @@ class ChestEvent implements Event {
     Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
     if(Interaction.choose(new String[]{"Open It", "Leave it alone"}) == 1) {
       if(Math.random() < 0.5) {
-        Mob mimic = new Mob("Mimic", new Stats(10, 10,10), new String[][]{{"That's no chest!"}, {"The mimic bounces up at you dealing %d damage!", "Mimic Sucks your soul dry, dealing %d damage!"}, {"The frantic chest collapses."} });
+        Mob mimic = new Mob("Mimic", new Stats(10,10,10,10,10,10,10), new String[][]{{"That's no chest!"}, {"The mimic bounces up at you dealing %d damage!", "Mimic Sucks your soul dry, dealing %d damage!"}, {"The frantic chest collapses."} });
         mimic.stats.set_level(dungeon.depth*2);
         mimic.heal();
         new Battle(dungeon.player, mimic);
