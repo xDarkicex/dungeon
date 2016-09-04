@@ -1,6 +1,5 @@
 public abstract class Event {
   public double chance = 0;
-  // What happens when this event is activated
   public abstract void execute(Dungeon dungeon);
 }
 class ChestEvent extends Event {

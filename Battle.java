@@ -18,7 +18,6 @@ public class Battle {
       if(monster.attack(player)) { break; }
     }
     if(player.living()) {
-      // You win
       int xp = monster.stats.total();
       Writer.blue(player.name+" wins! +"+xp+" XP");
       if(player.stats.add_xp(xp)) { Writer.blue("Level up!"); }

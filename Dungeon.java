@@ -5,14 +5,11 @@ import java.io.PrintStream;
 
 public class Dungeon {
   public Player player = new Player();
-  // private Mob enemy;
   private Event[] events = new Event[] {
     new ChestEvent(),
-    // new ItemEvent(),
     new MonsterEvent(),
     new TrapEvent()
   };
-  // Main game code
   public void run(){
     Writer.clear();
     Writer.say("Welcome to the dungeon!");
@@ -23,22 +20,16 @@ public class Dungeon {
       int input = Interaction.choose(new String[]{"Continue","Rest"});
       Writer.clear();
       if(input == 1) { events[(int)(Math.random()*events.length)].execute(this); }
-      else {
-        Writer.yellow("Rest temporarily disabled");
-        // player.rest();
-      }
+      // TODO: Re-enable this
+      else { Writer.yellow("Rest temporarily disabled"); }
     }
   }
-  // Static bullshit
-  private static Dungeon game;
+
   public static void main(String args[]){
-    // game.run();
     while(true){
-      game = new Dungeon();
-      game.run();
+      (new Dungeon()).run();
       Writer.yellow("Continue?");
-      if(Interaction.choose(new String[]{"Yes","No"}) == 1) { continue; }
-      else { break; }
+      if(Interaction.choose(new String[]{"Yes","No"}) == 2) { break; }
     }
   }
 }

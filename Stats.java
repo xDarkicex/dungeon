@@ -1,12 +1,8 @@
 public class Stats {
   public int level;
   private int vitality, attack, defense, xp;
-  // private int vitality = 0;
-  // private int attack = 0;
-  // private int defense = 0;
-  // private int speed = 0;
-  // Random roll by level.
   Stats(int level) {
+    // Random roll via level
     // Start with 5 points, gain 1 point every level
     int points = 5 + level;
     for(int i = 0; i < points; i++) {
