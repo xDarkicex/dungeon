@@ -20,7 +20,7 @@ class TrapEvent extends Event {
     // Safe
     if(Math.random() < 0.25) { Writer.blue(trap[1]); }
     // Hurt
-    else if(Math.random() < 0.75) { int damage = 7 * dungeon.player.stats.level; dungeon.player.health -= damage; Writer.red(trap[2]); }
+    else if(Math.random() < 0.75) { int damage = 7 * dungeon.player.stats.level; dungeon.player.health -= damage; Writer.red(String.format(trap[2],damage)); }
     // Killed
     else { Writer.red(trap[3]); dungeon.player.kill(); }
   }
