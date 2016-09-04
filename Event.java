@@ -1,19 +1,16 @@
-public abstract class Event {
-  public double chance = 0;
-  public abstract void execute(Dungeon dungeon);
-}
-class ChestEvent extends Event {
+public interface Event { public void execute(Dungeon dungeon); }
+class ChestEvent implements Event {
   public void execute(Dungeon dungeon) {
     Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
     new Battle(dungeon.player, new Mob(Monster.MIMIC));
   }
 }
-class ItemEvent extends Event {
+class ItemEvent implements Event {
   public void execute(Dungeon dungeon) {
     Writer.say("This is an ItemEvent!");
   }
 }
-class TrapEvent extends Event {
+class TrapEvent implements Event {
   public void execute(Dungeon dungeon) {
     String[] trap = FlavorText.trap();
     Writer.red(trap[0]);
@@ -25,7 +22,7 @@ class TrapEvent extends Event {
     else { Writer.red(trap[3]); dungeon.player.kill(); }
   }
 }
-class MonsterEvent extends Event {
+class MonsterEvent implements Event {
   private static Monster[] monsters = new Monster[] {
     Monster.SLIME,
     Monster.SPIDER
