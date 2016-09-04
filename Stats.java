@@ -1,6 +1,6 @@
 public class Stats {
   public int level = 1;
-  private int constitution, strength, intellect, dexterity, wisdom, charisma, luck, xp;
+  public int constitution, strength, intellect, dexterity, wisdom, charisma, luck, xp;
   Stats(int level) {
     // Random roll via level
     // Start with 5 points, gain 1 point every level

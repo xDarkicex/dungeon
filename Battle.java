@@ -7,9 +7,9 @@ public class Battle {
     Writer.red(monster.flavors[0][(int)(Math.random()*monster.flavors[0].length)]);
     Writer.purple(player.flavors[0][(int)(Math.random()*player.flavors[0].length)]);
     while(true) {
-      // Player's turn
       Writer.purple(player);
       Writer.red(monster);
+      // Player's turn
       int input = Interaction.choose(new String[]{"Attack","Run","Use Potion"});
       if(input == 1) {
         if(player.attack(monster)) { break; }
