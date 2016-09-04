@@ -2,9 +2,9 @@ public class Mob {
   public int health;
   public String name;
   public Stats stats;
-  public String[] flavors; // String[]{ "Appearance", "Attack", "Defeat" }
+  public String[][] flavors; // String[]{ "Appearance", "Attack", "Defeat" }
   Mob() { }
-  Mob(String name, Stats stats, String[] flavors) {
+  Mob(String name, Stats stats, String[][] flavors) {
     this.name = name;
     this.stats = stats;
     this.flavors = flavors;
@@ -25,9 +25,9 @@ public class Mob {
     int attack = stats.get_attack() - defender.stats.get_defense();
     attack = ((attack<=0)?1:attack);
     defender.health -= attack;
-    Writer.say(String.format(flavors[1],attack));
+    Writer.say(String.format(flavors[1][(int)(Math.random()*flavors[1].length)],attack));
     return !defender.living();
   }
   public boolean living() { return health > 0; }
-  public String toString() { return "["+name+"] [HP "+health+"/"+stats.max_health()+"]"; }
+  public String toString() { return "["+name+"] [Level "+stats.level+"] [HP "+health+"/"+stats.max_health()+"]"; }
 }

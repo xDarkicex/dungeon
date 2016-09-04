@@ -1,10 +1,32 @@
 public enum Monster {
-  SLIME ("Slime", new Stats(3, 1,1), new String[]{"A wobbly creature jumps in front of you!", "Jumps frantically at you, dealing %d damage.", "The slime dissapates"}),
-  SPIDER ("Spider", new Stats(5, 3,2), new String[]{"A spider swings down from above!", "The spider bites you", "The spider dies"});
+  SLIME ("Slime", new Stats(3, 1,1), new String[][]{
+    {"A wobbly creature jumps in front of you!"},
+    {"Jumps frantically at you, dealing %d damage."},
+    {"The slime dissapates"}}),
+  //RATS
+  SICKLYRAT ("Sick Rat", new Stats(1,1,1), new String[][]{
+    {"Sickly Rat Appears"},
+    {"Rat bites you dealing %d damage.", "Tail whip! %d damage."},
+    {"Rat triggered a tripwire and died!"}
+  }),
+  RAT ("Anger Rat", new Stats(3,1,2), new String[][]{
+    {"Angery rat attacks"},
+    {"Rat bites you dealing %d damage.", "Tail whip! %d damage.", "Rat Claws into your leg inflicting %d damage."},
+    {"Rat explodes"}
+  }),
+  LARGERAT ("Large Rat", new Stats(5,3,3), new String[][]{
+    {"A rat of the top percentile appears"},
+    {"HYPER FANG inficting %d damage!", "Rat bites you dealing %d damage.", "Tail whip! %d damage.", "Rat Claws into your leg inflicting %d damage."},
+    {"CAAZ DOESNT KNOW HIS MEMES!!!"}
+  }),
+  SPIDER ("Spider", new Stats(5, 3,2), new String[][]{
+    {"A spider swings down from above!"},
+    {"The spider bites you dealing %d damages."},
+    {"The spider dies"}});
   public String name;
   public Stats stats;
-  public String[] flavors;
-  Monster(String name, Stats stats, String[] flavors) {
+  public String[][] flavors;
+  Monster(String name, Stats stats, String[][] flavors) {
     this.name = name;
     this.stats = stats;
     this.flavors = flavors;

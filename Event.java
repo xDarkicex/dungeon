@@ -2,13 +2,21 @@ public interface Event { public void execute(Dungeon dungeon); }
 class ChestEvent implements Event {
   public void execute(Dungeon dungeon) {
     Writer.say(FlavorText.chests[(int)(Math.random()*FlavorText.chests.length)]);
-    if(Math.random() < 0.5) {
-      new Battle(dungeon.player, new Mob("Mimic", new Stats(10, 5,5), new String[]{"That's no chest!", "The mimic bounces up at you dealing %d damage!", "The frantic chest collapses." }));
+    if(Interaction.choose(new String[]{"Open It", "Leave it alone"}) == 1) {
+      if(Math.random() < 0.5) {
+        Mob mimic = new Mob("Mimic", new Stats(10, 10,10), new String[][]{{"That's no chest!"}, {"The mimic bounces up at you dealing %d damage!", "Mimic Sucks your soul dry, dealing %d damage!"}, {"The frantic chest collapses."} });
+        mimic.stats.set_level(dungeon.depth*2);
+        mimic.heal();
+        new Battle(dungeon.player, mimic);
+      }
+      else {
+        Item item = Item.values()[(int)(Math.random()*Item.values().length)];
+        Writer.blue("You open it up and find a "+item.name+" inside!");
+        dungeon.player.inventory.add_item(item);
+      }
     }
     else {
-      Item item = Item.values()[(int)(Math.random()*Item.values().length)];
-      Writer.blue("You open it up and find a "+item.name+" inside!");
-      dungeon.player.inventory.add_item(item);
+      Writer.say("You decide to leave the chest behind.");
     }
   }
 }
@@ -44,5 +52,11 @@ class TrapEvent implements Event {
   }
 }
 class MonsterEvent implements Event {
-  public void execute(Dungeon dungeon) { new Battle(dungeon.player, new Mob( Monster.values()[(int)(Math.random()*Monster.values().length)]) ); }
+  public void execute(Dungeon dungeon) {
+    Mob monster = new Mob( Monster.values()[(int)(Math.random()*Monster.values().length)]);
+    monster.stats.set_level(dungeon.depth);
+    monster.heal();
+    new Battle(dungeon.player, monster );
+
+    }
 }
