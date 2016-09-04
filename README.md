@@ -3,6 +3,9 @@ This is a text based adventure from the minds that brought about the end of your
 
 ## Getting Started
 Fun fact! We use a bash function to build and run this project.
+
+You can use this by simply running venti and it'll compile and run the game.
+
 ```bash
 function grande() {
 	# Build to Jar
@@ -24,3 +27,17 @@ function venti() {
 	fi
 }
 `
+
+## TODO
+- [ ] Name yourself.
+- [ ] Re-enable resting
+- [ ] Dynamic items
+- [ ] Inventory system
+- [ ] Dungeon stairs
+- [ ] Save/Load features
+- [ ] Save death points
+- [ ] Monster appearances based on depth
+- [ ] Wizards
+- [ ] Pets?
+- [ ] Dynamic player classes
+- [x] Remove herobrine
