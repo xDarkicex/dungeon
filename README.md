@@ -28,7 +28,7 @@ function venti() {
 		java -jar $1.jar;
 	fi
 }
-`
+``
 
 ## TODO
 - [x] Name yourself
