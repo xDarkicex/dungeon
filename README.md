@@ -15,21 +15,23 @@ function grande() {
 }
 # build and run
 function venti() {
-	#capture current directory if no arguments given
+	# Capture current directory if no arguments given
 	if (( $# !=1 )); then
 		current_dir=${PWD##*/} &&
 		foo=`echo ${current_dir:0:1} | tr  '[a-z]' '[A-Z]'`${current_dir:1}
 		grande $foo &&
+		clear &&
 		java -jar $foo.jar
 	else
 		grande $1 &&
+		clear &&
 		java -jar $1.jar;
 	fi
 }
 `
 
 ## TODO
-- [ ] Name yourself.
+- [x] Name yourself
 - [ ] Re-enable resting
 - [ ] Dynamic items
 - [ ] Inventory system

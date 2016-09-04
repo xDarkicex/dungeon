@@ -9,8 +9,8 @@ public class Writer {
   public static final String CYAN = "\u001B[36m";
   public static final String WHITE = "\u001B[37m";
   public static final void clear() { System.out.print("\033[H\033[2J"); System.out.flush(); }
-  public static final void write(String string, String color, boolean with_color) {
-    string += "\n";
+  public static final void write(String string, String color, boolean with_color, boolean new_line) {
+    if(new_line) { string += "\n"; }
     for(char c : string.toCharArray()) {
       if(with_color) { System.out.print(color+c+RESET); }
       else { System.out.print(c); }
@@ -18,9 +18,10 @@ public class Writer {
       catch(InterruptedException e) { }
     }
   }
-  public static final void say(Object obj) { write(obj.toString(),"",false); }
+  public static final void say(Object obj) { write(obj.toString(),"",false,true); }
   // Color helper
-  public static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true); }
+  public static final void with(Object obj, String color) { Writer.write(obj.toString(),color,true,true); }
+  public static final void with_no_nl(Object obj, String color) { Writer.write(obj.toString(),color,true,false); }
   // Colors!
   public static final void red(Object o) { Writer.with(o,RED); }
   public static final void green(Object o) { Writer.with(o,GREEN); }

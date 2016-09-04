@@ -6,7 +6,6 @@ public class Dungeon {
     new TrapEvent()
   };
   public void run(){
-    Writer.clear();
     Writer.say("Welcome to the dungeon!");
     Writer.say(FlavorText.story_pieces[0]);
     while(player.health > 0) {

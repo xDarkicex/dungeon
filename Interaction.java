@@ -17,4 +17,14 @@ public class Interaction {
     }
     return input;
   }
+  public static String get_string(String prompt) {
+    String input;
+    while(true) {
+      Writer.with_no_nl(prompt+": ",Writer.YELLOW);
+      input = con.readLine();
+      if(input.toCharArray().length == 0){ Writer.red("Input invalid. Type something!"); }
+      else { break; }
+    }
+    return input;
+  }
 }
