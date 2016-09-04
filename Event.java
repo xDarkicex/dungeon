@@ -19,7 +19,10 @@ class StairEvent implements Event {
 }
 class ItemEvent implements Event {
   public void execute(Dungeon dungeon) {
-    Writer.say("This is an ItemEvent!");
+    // Writer.say("This is an ItemEvent!");
+    Item item = Item.values()[(int)(Math.random()*Item.values().length)];
+    Writer.say("You found a "+item.name+" lying on the floor!");
+    dungeon.player.inventory.add_item(item);
   }
 }
 class TrapEvent implements Event {

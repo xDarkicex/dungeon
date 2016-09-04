@@ -5,7 +5,8 @@ public class Dungeon {
     new StairEvent(),
     new ChestEvent(),
     new MonsterEvent(),
-    new TrapEvent()
+    new TrapEvent(),
+    new ItemEvent()
   };
   public void run(){
     Writer.say("Welcome to the dungeon, "+player.name+".");
