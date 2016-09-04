@@ -35,10 +35,5 @@ class TrapEvent implements Event {
   }
 }
 class MonsterEvent implements Event {
-  public void execute(Dungeon dungeon) {
-    new Battle(dungeon.player, new Mob(
-      Monster.values()[(int)(Math.random()*Monster.values().length)])
-    );
-    // dungeon.battle(dungeon.monsters[(int)(Math.random()*dungeon.monsters.length)]);
-  }
+  public void execute(Dungeon dungeon) { new Battle(dungeon.player, new Mob( Monster.values()[(int)(Math.random()*Monster.values().length)]) ); }
 }
